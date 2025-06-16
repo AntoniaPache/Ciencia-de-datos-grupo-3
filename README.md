@@ -100,8 +100,6 @@ Se intentó ajustar un modelo de predicción de demanda **mensual** utilizando P
 
 **Justificación técnica (valores reales):**
 
-El siguiente bloque de código (ver `codigo.py`) muestra el intento de predicción y las métricas obtenidas:
-
 ```python
 # INTENTO DE PREDICCIÓN MENSUAL Y JUSTIFICACIÓN
 # ...
@@ -116,6 +114,13 @@ R2 mensual: -8.917
 - **RMSE mensual:** 210.799.260
 - **R2 mensual:** -8.917 (negativo, lo que indica que el modelo es peor que predecir la media)
 
-**Conclusión:**
+Además, a pesar de los distintos enfoques probados (predicción diaria, semanal, mensual, por provincia, por tipo de transporte, etc.), **ningún modelo predictivo logra resultados satisfactorios**. Las razones principales son:
 
-> Los datos disponibles permiten realizar análisis descriptivos y obtener insights útiles para la planificación, y validan parcialmente las hipótesis planteadas. Sin embargo, no son suficientes para construir modelos predictivos robustos de demanda. Para lograr predicciones confiables, sería necesario contar con variables adicionales (eventos, clima, feriados, datos socioeconómicos, etc.) y granularidad más fina en los datos.
+- **Falta de variables explicativas**: Los datos solo contienen información agregada por fecha, provincia y tipo de transporte. No hay variables sobre eventos, clima, feriados, huelgas, cambios tarifarios, ni datos socioeconómicos, que son determinantes para la demanda.
+- **Alta variabilidad y shocks externos**: Se observan saltos abruptos y caídas en la demanda que no pueden ser anticipados por el modelo, ya que no hay información sobre los factores que los causan (por ejemplo, pandemia, restricciones, eventos masivos, etc.).
+- **Estacionalidad y patrones no estables**: Aunque hay cierta estacionalidad, los patrones cambian de un año a otro y no son predecibles solo con la fecha.
+- **Datos agregados**: La agregación a nivel mensual, diario o incluso por provincia, oculta la dinámica real y la heterogeneidad del sistema de transporte.
+- **Resultados de los modelos**: Los intentos de predicción (mensual, diaria, etc.) arrojan métricas muy malas (R2 negativo, errores altos), lo que indica que el modelo es peor que simplemente predecir la media histórica.
+
+> **Conclusión general:**
+> Con los datos disponibles, solo es posible hacer análisis descriptivo y exploratorio. Para cualquier análisis predictivo confiable se necesitarían variables adicionales y datos más detallados. Los modelos actuales no pueden anticipar cambios ni capturar la complejidad real del sistema de transporte.
