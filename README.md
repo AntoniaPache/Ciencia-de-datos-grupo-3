@@ -79,3 +79,43 @@ Este trabajo está dirigido a:
 - Optimización de recursos
 - Planificación operativa
 - Reducción de costos operativos
+
+## 📌 Conclusiones y Limitaciones para Machine Learning Predictivo
+
+Tras el análisis exploratorio realizado sobre los datos de transacciones SUBE, se pueden extraer los siguientes puntos clave en relación a las hipótesis planteadas:
+
+- **Hipótesis central:** Se observan patrones temporales definidos en el uso del transporte público, como mayor demanda en días laborables y una fuerte concentración en el AMBA. Esto valida parcialmente la hipótesis central.
+- **Sub-hipótesis 1:** Se identifican ciertos patrones estacionales, pero la variabilidad mensual es muy alta y no siempre predecible.
+- **Sub-hipótesis 2:** Se confirma que existen diferencias significativas entre días laborables y no laborables (la demanda cae un 44,7% en fines de semana).
+- **Sub-hipótesis 3:** Los datos muestran saltos y caídas abruptas que sugieren impacto de eventos especiales, pero estos no están explícitamente identificados en los datos.
+- **Sub-hipótesis 4:** Se observan cambios notables en la demanda durante la pandemia de COVID-19, pero la recuperación y los cambios posteriores no siguen patrones simples.
+
+### ¿Por qué no es posible hacer predicción confiable con Machine Learning?
+
+Se intentó ajustar un modelo de predicción de demanda **mensual** utilizando Prophet (modelo de series temporales) sobre los datos agregados. Los resultados muestran que:
+
+- El modelo no logra capturar la variabilidad real de la demanda mensual (R2 negativo, errores altos y residuos grandes).
+- Los residuos muestran patrones no explicados y alta dispersión, lo que indica que hay factores externos y no modelados que afectan la demanda.
+- Las variables disponibles (fecha, provincia, tipo de transporte) no son suficientes para explicar ni predecir la demanda futura con precisión.
+
+**Justificación técnica (valores reales):**
+
+El siguiente bloque de código (ver `codigo.py`) muestra el intento de predicción y las métricas obtenidas:
+
+```python
+# INTENTO DE PREDICCIÓN MENSUAL Y JUSTIFICACIÓN
+# ...
+MAE mensual: 191,557,533
+RMSE mensual: 210,799,260
+R2 mensual: -8.917
+# y_true: [307956052 280818381 336390154 349483764 365452900 333547187 351676034 373951328 368348487 377762029 361743062 328481442 270681840 270547148 329032176 347072568 340627745  79011877]
+# y_pred: [5.33775349e+08 5.17820964e+08 5.79054564e+08 4.51395194e+08 4.45635453e+08 4.58419691e+08 4.62692174e+08 4.75728131e+08 4.90733711e+08 5.13646268e+08 5.43038234e+08 5.66193072e+08 4.65477004e+08 4.91333040e+08 6.13438675e+08 5.33994783e+08 5.34843736e+08 5.43399717e+08]
+```
+
+- **MAE mensual:** 191.557.533
+- **RMSE mensual:** 210.799.260
+- **R2 mensual:** -8.917 (negativo, lo que indica que el modelo es peor que predecir la media)
+
+**Conclusión:**
+
+> Los datos disponibles permiten realizar análisis descriptivos y obtener insights útiles para la planificación, y validan parcialmente las hipótesis planteadas. Sin embargo, no son suficientes para construir modelos predictivos robustos de demanda. Para lograr predicciones confiables, sería necesario contar con variables adicionales (eventos, clima, feriados, datos socioeconómicos, etc.) y granularidad más fina en los datos.
