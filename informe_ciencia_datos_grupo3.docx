@@ -138,8 +138,28 @@ Adicionalmente se implementó **Prophet** para predicción de demanda mensual to
 - **Estrategia comercial**: Identificar oportunidades en mercados menos saturados
 - **Políticas públicas**: Mejorar conectividad en áreas con alta demanda predicha
 
-> **Conclusión Final:**
-> **El proyecto fue exitoso en desarrollar modelos predictivos confiables** para la demanda de transporte público. Con un R² de 0.857, el modelo Random Forest demuestra alta capacidad predictiva, validando que los patrones de uso del transporte SUBE son predecibles y pueden optimizar significativamente la planificación del servicio.
+## 📊 Análisis Exploratorio de Datos
+
+### Resumen del Dataset
+- **Período de datos**: 2020-01-01 a 2025-06-09
+- **Total de registros**: 2,407,623
+- **Empresas únicas**: 388
+- **Líneas de transporte**: 1,831
+- **Provincias**: 23
+- **Municipios**: 99
+
+### Distribución por Tipo de Transporte
+- **Colectivo**: 2,350,412 registros (97.6%)
+- **Tren**: 34,597 registros (1.4%)
+- **Subte**: 14,286 registros (0.6%)
+- **Lanchas**: 8,319 registros (0.3%)
+- **Circular**: 9 registros (0.0%)
+
+### Concentración de Mercado
+- **Top 5 empresas**: Controlan 13.0% del mercado
+- **Top 10 empresas**: Controlan 20.1% del mercado
+- **Top 20 empresas**: Controlan 30.7% del mercado
+- **Mercado fragmentado**: 388 empresas compiten en el sector
 
 ### 🔧 Implementación Técnica
 
@@ -153,3 +173,6 @@ Adicionalmente se implementó **Prophet** para predicción de demanda mensual to
 - Prophet para series temporales
 - Folium para visualización geoespacial
 - Análisis exploratorio completo con seaborn/matplotlib
+
+> **Conclusión Final:**
+> **El proyecto fue exitoso en desarrollar modelos predictivos confiables** para la demanda de transporte público. Con un R² de 0.857, el modelo Random Forest demuestra alta capacidad predictiva, validando que los patrones de uso del transporte SUBE son predecibles y pueden optimizar significativamente la planificación del servicio. 
